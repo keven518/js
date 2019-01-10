@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>深拷贝</title>
+</head>
+<body>
+  <script >
+    var k = {}
+    var c = []
+    console.log(k.constructor, typeof k)
+    console.log(c.constructor, typeof c)
+    function deepCopy(p, c) {
+      var c = c || {};
+      for (var i in p) {
+        if (typeof p[i] === 'object') {
+          c[i] = (p[i].constructor === Array) ? []:{};
+          deepCopy(p[i], c[i]);
+        } else {
+          c[i] = p[i]
+        }
+      }
+      return c;
+    }
+
+  </script>
+</body>
+</html>

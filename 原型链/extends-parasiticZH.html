@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 寄生式继承把原型式+工厂模式结合而来，目的是为了封装创建对象的过程。
+    // 临时中转函数
+    function obj(o) { //传递一个字面量函数
+      function F() { } //创建一个构造函数
+      F.prototype = o; //把字面量函数赋值给构造函数的原型
+      return new F(); //最终返回出实例化的构造函数
+    }
+
+    // 寄生函数
+    function create(parend, children) { //封装创建过程
+      var f = obj(parend.prototype);
+      f.constructor = children;   //调整子集的构造器
+      children.prototype = f
+      // f.run = function () {
+      //   return this.arr; //同样，会共享引用
+      // };
+      return f;
+    }
+    function Box(name, age) {
+      this.name = name;
+      this.age = age;
+      this.arr = ['哥哥', '妹妹', '父母'];
+    }
+    Box.prototype.run = function () {
+      return this.name;
+    };
+    function Desk(name, age) {
+      Box.call(this, name);
+      this.age = age;
+    }
+    create(Box, Desk); //通过这里实现继承
+    var desk = new Desk('柯文', 100);
+    desk.arr.push('姐姐');
+    alert(desk.arr);
+    alert(desk.run()); //只共享了方法
+    var desk2 = new Desk('Jack', 200);
+    alert(desk2.arr);
+    console.log(desk.constructor)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浅拷贝</title>
+</head>
+<body>
+  <script >
+    var Chinese = {
+      nation: '中国 🇨🇳'
+    }
+    var Doctor = {
+      career: '医生'
+    }
+    var c = {}
+    function extendCopy(p) {
+      
+      for (var i in p) {
+        c[i] = p[i];
+      }
+      c.uver = p
+      console.log('c: ', c)
+      return c;
+    }
+    var Doctor = extendCopy(Chinese);
+    Doctor.cereer = '医生';
+    Doctor.uver = {
+      name: 'keven'
+    }
+    console.log('Doctot: ', Doctor)
+    console.dir(Doctor)
+    console.log('c: ', c)
+    console.dir(c)
+  </script>
+</body>
+</html>

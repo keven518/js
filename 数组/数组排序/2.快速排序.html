@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var array = [1, 3, 2, 5, 6, 2, 3, 4, 5, 6, 4, 5, 1, 2, 2, 3, 4, 5, 6, 4, 5, 1, 2, 2, 3, 4, 5, 7, 6, 8, 7, 6, 3, 5, 3, 4, 5, 6, 1, 6, 7, 5, 3, 5, 1, 1, 2, 3, 4];
+  // console.log(array.sort((b,d) => b-d))
+  /* 
+  quick: 快速排序
+  @param
+    ary: [array] 需要实现排序的数组
+  @return
+    [array] 排序后的数组
+   */
+
+  function quick(ary) {
+    if (ary.length <= 1) {
+      return ary
+    }
+    var cIndex = Math.floor(ary.length / 2),
+    cValue = ary.splice(cIndex, 1)[0];
+    var aryL = [],
+    aryR = [];
+    for (var i = 0; i<ary.length; i++) {
+      var cur = ary[i];
+      cur < cValue ? aryL.push(cur) : aryR.push(cur)
+    }
+    return quick(aryL).concat(cValue, quick(aryR));
+    
+  }
+  console.log(quick(array)) 
+  </script>
+</body>
+</html>

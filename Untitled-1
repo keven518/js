@@ -1,0 +1,11 @@
+1、数据类型
+基本(值)类型
+* String: 任意字符串
+* Number: 任意的数字
+* boolean: true/false
+* undefined: 
+* null
+对象(引用)类型
+* Object
+* Function
+* Array

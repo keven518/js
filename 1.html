@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function foo1() {
+      return {
+        bar: "foo1"
+      };
+    }
+
+    function foo2() {
+      return //return 一旦换行就是返回空
+      {
+        bar: "foo2"
+      };
+    }
+    var a = foo1();
+    var b = foo2();
+    console.log(a) //Object {bar: "hello"}
+    console.log(b) //underfind
+  </script>
+</body>
+
+</html>

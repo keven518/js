@@ -1,0 +1,23 @@
+验证数组中是否包含某一项
+indexOf / lastIndexOf 获取当前项在数组中第一次或者最后一次出现位置的索引
+数组中的这两个方法在IE6～8下不兼容
+字符串中的这两个方法兼容所有的浏览器
+if(arry.indexOf(12)>-1) {
+  // -> 数组包含12
+}
+
+遍历数组中每一项的方法
+IE6～8都不兼容
+1、forEach
+arry.forEach(function(value, index){
+  //=>数组多少项，回调函数执行多少次；value就是遍历数组这一项的值，index是索引
+})
+2、map
+arry.map(function(value, index){
+  //=>数组多少项，回调函数执行多少次；value就是遍历数组这一项的值，index是索引
+  return xxx; //=>return后返回的结果就是把当前遍历的这一项修改为xxx
+})
+3、filter
+4、find
+5、reduce
+6、every

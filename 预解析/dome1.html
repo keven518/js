@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    alert(a)  // 后面有用a申明的函数所以返回a函数
+    a()  // 执行a函数
+    var a = 3
+    function a(){
+      alert(10)
+    }
+    alert(a)    // 函数什么优先于变量什么所以a = 3覆盖了 a = fn, 所以 3
+    a=6     // a=6覆盖了a=3
+    a()   // 报错:a is not a function
+
+
+
+
+
+
+
+    
+  </script>
+</body>
+</html>

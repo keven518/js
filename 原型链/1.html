@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  console.log(Date.prototype);
+  function Fn() {}
+  Fn.prototype.test = function() {
+    console.log('test')
+  }
+  console.log(Fn.prototype)
+  console.log(Fn.prototype.constructor === Fn)
+  let fn = new Fn()
+  console.log(fn.test())
+  </script>
+</body>
+</html>

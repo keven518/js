@@ -1,0 +1,5 @@
+js推送方案
+1、comet-基于http长链接的服务器推送技术
+
+2、基于WebSocket的推送方案
+3、SSE（Server-Send Event）- 服务器推送数据的新方法

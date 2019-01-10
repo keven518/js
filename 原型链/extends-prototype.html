@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 原型链继承
+    function Box() { //Box 构造
+      this.name = 'Lee';
+    }
+    function Desk() { //Desk 构造
+      this.age = 100;
+    }
+    Desk.prototype = new Box(); //Desc 继承了 Box，通过原型，形成链条
+    var desk = new Desk();
+    alert(desk.age);
+    alert(desk.name); //得到被继承的属性
+    function Table() { //Table 构造
+      this.level = 'AAAAA';
+    }
+    Table.prototype = new Desk(); //继续原型链继承
+    var table = new Table();
+    alert(table.name);
+  </script>
+</body>
+
+</html>

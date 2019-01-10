@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>$.fn</title>
+</head>
+<body>
+  <ul>
+    <li>asdfasf</li>
+    <li>dfadsfa</li>
+    <li>dghfh</li>
+    <li>wertwert</li>
+  </ul>
+    <script src="js/jquery.js"></script>
+    <script>
+      $.fn.myPlugin = function(options) {
+        var defaults = {
+          'color': 'green',
+          'fontSize': '12px'
+        }
+        var settings = $.extend({}, defaults, options);
+        return this.css({
+          'color': settings.color,
+          'fontSize': settings.fontSize
+        })
+      }
+      $(function(){
+        $('li').myPlugin().css('color', '#900').eq(1).text('keven');
+      })
+    </script>
+  
+</body>
+</html>

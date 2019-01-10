@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      border: 1px #ccc solid;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <script>
+    /*
+    call方法: 
+    语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]]) 
+    定义：调用一个对象的一个方法，以另一个对象替换当前对象。 
+    说明： 
+    call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。 
+    如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。 
+
+    apply方法： 
+    语法：apply([thisObj[,argArray]]) 
+    定义：应用某一对象的一个方法，用另一个对象替换当前对象。 
+    说明： 
+    如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。 
+    如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+    */
+    var test1 = document.getElementById('test1')
+    var test2 = document.getElementById('test2')
+
+    function t() {
+      console.log('this: ', this)
+      this.style.background = 'gray'
+      this.run = ()=>{
+        console.log('kk')
+      }
+      return this.run()
+    }
+
+    console.log(t.call(test2))  // 改变函数t里面this的指向并执行它
+    console.log('1:', typeof t.call(test2))
+    console.dir(test2)
+
+    /* 总结：a.call(b, ...)
+    1.改变函数a里面this的指向(b这个对象)并执行它
+    2.b这个对象继承了a的所有属性和方法
+    */
+  </script>
+</body>
+
+</html>

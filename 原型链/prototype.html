@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    function Box(name, age) {
+      this.name = name;  实例属性
+      this.age = age;
+      this.run = run;    实例方法
+    }
+
+    constructor 构造器
+https://www.cnblogs.com/yupeng/archive/2012/04/06/2435386.html
+    在javascript的使用过程中，constructor 和prototype这两个概念是相当重要的，深入的理解这两个概念对理解js的一些核心概念非常的重要。
+
+我们在定义函数的时候，函数定义的时候函数本身就会默认有一个prototype的属性，而我们如果用new 运算符来生成一个对象的时候就没有prototype属性。我们来看一个例子，来说明这个
+    */
+    function Box() { } //声明一个构造函数  函数定义的时候函数本身就会默认有一个prototype的属性
+    Box.prototype.name = 'Lee'; //在原型里添加属性
+    Box.prototype.age = 100;
+    Box.prototype.run = function () { //在原型里添加方法
+      return this.name + this.age + '运行中...';
+    };
+    var box = new Box();  //而我们如果用new 运算符来生成一个对象的时候就没有prototype属性。
+    //a.prototype 包含了2个属性，一个是constructor ，另外一个是__proto__
+    //每个对象都会在其内部初始化一个属性，就是__proto__，当我们访问一个对象的属性 时，如果这个对象内部不存在这个属性，那么他就会去__proto__里找这个属性，这个__proto__又会有自己的__proto__，于是就这样 一直找下去。
+
+    //判断一个对象实例(对象引用)是不是指向了原型对象，基本上只要是实例花了，它自动指向的
+    var box1 = new Box();
+    box1.__proto__.age = 1000
+    box1.sex = '男'
+    console.log(box.__proto__.constructor)
+    console.log(box.constructor)
+    console.log(box)
+    console.log(Box.prototype.constructor)
+    console.log(Box.prototype.isPrototypeOf(box))
+    console.log(box.age)
+    console.log(box1.age)
+    console.log(box1.hasOwnProperty('sex'));  //判断box1实例中是否有sex
+    console.log('name' in box);  //判断box1实有sex
+
+    // 创建一个函数判断原型中是否有这个属性
+    function isProperty(object, property) {
+      return !object.hasOwnProperty(property) && (property in object)
+    }
+    function fn() { }
+    fn.prototype = {
+      constructor: fn,
+      name: 'kv',
+      age: '17',
+      family: ['哥哥', '姐姐']
+    }
+    var kv = new fn()
+    console.log(kv.family)
+    kv.family.push('弟弟')
+    console.log('kv: ', kv)
+    console.log('kv.__proto__: ', kv.__proto__)
+    console.log(fn.prototype)
+
+    function Cmm() {
+      this.family = ['1', '2']
+    }
+    var wife = new Cmm()
+    console.log('wife: ', wife)
+    wife.family.push('3')
+    console.log('wife: ', wife)
+    console.log('wife.__proto__: ', wife.__proto__)
+
+    // 组合构造函数+原型模式
+    function Keven(name, age) {      // 保持独立的用构造函数
+      this.name = name;
+      this.age = age;
+      this.family = ['父亲', '母亲', '妹妹'],
+        console.log('this: ', this)
+      console.log(typeof this)
+      console.log(this.constructor)
+      console.log('Keven: ', Keven)
+      console.log(typeof Keven)
+      console.log(Keven.constructor)
+      console.log(Keven.constructor === Function)
+      console.log(this.family.constructor)
+      console.log(Keven.constructor === Array)
+      var protoArr = Object.keys(this.__proto__)
+      console.log('protoArr: ', protoArr.length)
+      if (!protoArr.length) {
+        console.log('_proto')
+        Keven.prototype.run = function () {
+          return this.name + this.age + this.family
+        }
+        Keven.prototype.sex = '男'
+        console.log('proto_')
+      }
+
+      
+    }
+
+    var kv = new Keven('kewen', 18)
+
+    console.log(kv.run())
+    console.log(kv.sex)
+
+    var kv2 = new Keven('cmm', 12)
+    console.log(kv2.run())
+    console.log(kv2.sex)
+
+    console.log(Object.constructor == Function)
+    console.log(Object.prototype.toString)
+    console.log(Object.prototype.__proto__)
+    console.log(Object.prototype.cmm)
+
+    var kv_obj = {
+    }
+    function kv_fn() {}
+    console.log(kv_obj.constructor == Object)
+    console.log(kv_fn)
+
+
+    /*
+    同理，在这里我们来分析出new 运算符做了那些事情
+
+    var box={}; 也就是说，初始化一个对象box。
+    box.__proto__=Box.prototype;
+    Box.call(box);也就是说构造box，也可以称之为初始化box。
+    */
+  </script>
+</body>
+
+</html>

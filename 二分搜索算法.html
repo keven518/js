@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>demo</title>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+      var binarySearch = function(array, start, stop, num) {
+        if(stop - start == 1) {
+          if(array[start] == num) {
+            return start;
+          }
+          if(array[stop] == num) {
+            return stop;
+          }
+          return -1;
+        }  
+        var center = Math.floor((start + stop)/2);
+        if(num != array[center]) {
+          return num > array[center] ? binarySearch(array, center, stop, num) 
+            : binarySearch(array, start, center, num);
+        }
+        return center;
+      }
+      var array = [1,4,6,12,15,20];
+      document.writeln(binarySearch(array, 0, array.length, 20));
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

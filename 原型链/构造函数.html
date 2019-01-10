@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Animal(name) {
+      this.name = name;
+      this.speak = function(){
+        console.log('bark...' + this.name)
+      }
+    }  
+    var kv = new Animal('kv')
+    kv.speak();
+    var cmm = function () {}
+    var cw = {}
+    console.log(cmm.prototype);
+    console.log(cmm.__proto__);
+    console.log('cw', cw.prototype);
+    console.log(cw.__proto__);
+  </script>
+</body>
+</html>

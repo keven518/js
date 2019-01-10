@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      border: 1px #ccc solid;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <script type="text/javascript">
+    function MAN(name, sex, age) {
+      this.name = name;
+      this.sex = sex;
+      this.age = age;
+      this.say = function (school, zhuanye) {
+        console.log(this.name + " , " + this.sex + " ,今年" + this.age + "岁！在" + school + "学习" + zhuanye);
+      }
+    }
+    function WOMAN(name, sex, age) {
+      this.name = name;
+      this.sex = sex;
+      this.age = age;
+    }
+    var man = new MAN("张三", "男", 26);
+    var woman = new WOMAN("小红", "女", 18);
+    man.say('清华大学', '挖掘机');
+    man.say.call(woman, "蓝翔技校", "电气焊");
+    man.say.apply(woman, ["新东方", "火星语"]);
+    man.say.bind(woman)("德云社", "流行音乐");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    2.核心
+    用beget(Super.prototype);切掉了原型对象上多余的那份父类实例属性
+
+    P.S.啥？没看明白？哦哦~，忘记说原型式和寄生式继承了，就说怎么总觉得忘了锁门。。这记性
+
+    P.S.寄生组合式继承，这名字不是很贴切，和寄生式继承关系并不是特别大
+
+    3.优缺点
+    优点：完美了
+
+    缺点：理论上没有了（如果用起来麻烦不算缺点的话。。）
+
+    P.S.用起来麻烦是一方面，另一方面是因为寄生组合式继承出现的比较晚，是21世纪初的东西，大家等不起这么久，所以组合继承是最常用的，而这个理论上完美的方案却只是课本上的最佳方式了
+        
+    */
+    function beget(obj) {   // 生孩子函数 beget：龙beget龙，凤beget凤。
+      var F = function () { };
+      F.prototype = obj;
+      return new F();
+    }
+    function Super() {
+      // 只在此处声明基本属性和引用属性
+      this.val = 1;
+      this.arr = [1];
+    }
+    //  在此处声明函数
+    Super.prototype.fun1 = function () { };
+    Super.prototype.fun2 = function () { };
+    //Super.prototype.fun3...
+    function Sub() {
+      Super.call(this);   // 核心
+      // ...
+    }
+    var proto = beget(Super.prototype); // 核心
+    proto.constructor = Sub;            // 核心
+    Sub.prototype = proto;              // 核心
+
+    var sub = new Sub();
+    alert(sub.val);
+    alert(sub.arr);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /* 为了解决多个类似对象声明的问题，我们可以使用一种叫做工厂模式的方法，这种方法
+    就是为了解决实例化对象产生大量重复的问题
+    因为根本无法
+    搞清楚他们到底是哪个对象的实例。Ï
+    */
+    function createObject(name, age) { //集中实例化的函数
+      var obj = new Object();
+      obj.name = name;
+      obj.age = age;
+      obj.run = function () {
+        return this.name + this.age + '运行中...';
+      };
+      return obj;
+    }
+    var box1 = createObject('Lee', 100); //第一个实例
+    var box2 = createObject('Jack', 200); //第二个实例
+    alert(box1.run());
+    alert(box2.run());  
+    alert(box1 instanceof Object)  //变量 box1是否为 Object 对象的实例
+    alert(box1 instanceof Object)  //变量 box1是否为 Object 对象的实例
+  </script>
+</body>
+
+</html>

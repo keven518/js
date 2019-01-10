@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var ary = [2, 34, 2, 53, 4, 3, 65, 53, 1, 4, 3, 5, 34, 65, 7, 7, 2, 8, 8, 9]
+    function unique(arr) {
+      var obj = {};
+      for (var i = 0; i < arr.length; i++) {
+        var cur = arr[i];
+        if (typeof obj[cur] !== 'undefined') {
+          //元素已经存在
+          // arr.splice(i, 1);
+          arr[i] = arr[arr.length - 1];
+          arr.length--;
+          i--;
+          continue
+        }
+        obj[cur] = cur;
+      }
+      return arr;
+    }
+    console.log(unique(ary))
+  </script>
+</body>
+
+</html>

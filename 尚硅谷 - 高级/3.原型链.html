@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2.显示原型与隐式原型</title>
+</head>
+<body>
+  <!--
+    1. 原型链(图解)
+      * 访问一个对象属性时
+        * 先在自身属性中查找，找到返回
+        * 如果没有， 再沿着__proto__这条链向上查找，找到返回
+        * 如果没有找到， 返回undefined
+      * 别名: 隐式原型链
+      * 作用: 查找对象的属性(方法)  
+    2. 构造函数／原型／实例对象的关系(图解)  
+    3. 构造函数／原型／实例对象的关系2(图解)
+  -->
+
+  <script>
+    function Fn() {
+      this.fnName = 'keven'
+      this.test1 = function () {
+        console.log('test1')
+      }
+    }  // 内部语句: this.prototype = {}
+    Fn.prototype.test2 = function () {
+      console.log('test2')
+    }
+    // 1. 每个函数function都有一个prototype，即显示原型属性，默认指向一个空的Object对象
+    console.log(Fn)
+    console.log(Fn.prototype)
+    // 2. 每个实例对象都有一个__proto__, 可称为隐式原型
+    var fn = new Fn()  // 内部语句: this.__proto__ = Fn.prototype
+    fn.test1()
+    console.log(fn.fnName);
+    fn.test2()
+    console.log(fn.toString())
+    // fn.test3()
+
+    var arr = new Array;
+    console.log('arr', arr)
+
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      border: 1px #ccc solid;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <script>
+    function student(studyNo)
+    {
+      this.studyNo = studyNo;
+
+    }
+
+    student.prototype.getNO = function () {
+      return this.studyNo;
+    }
+
+    var studentA = new student("studentA  001")
+    var studentB = new student("studentB  002")
+    alert(studentA.getNO);
+    alert(studentB.getNO);
+    alert(studentA.getNO.call(studentB));
+    alert(studentA.getNO.apply(studentB, []))  
+  </script>
+</body>
+
+</html>

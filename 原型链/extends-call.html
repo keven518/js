@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 对象冒充继承, 对象冒出只能继承实例的属性和方法，无法继承原型的属性和方法
+    function Box(name, age) { //Box 构造
+      this.name = name;
+      this.age = age;
+      this.famili = ['哥哥', '姐姐', '弟弟']
+    }
+    Box.prototype.sex = '男'
+    Box.prototype.run = function(str) {
+      return 'kewen' + str
+    }
+    function Desk(name, age) { //Desk 构造
+      Box.call(this, name, age)
+      // this.__proto__ = Box.prototype
+    }
+    Desk.prototype = new Box()
+    var desk = new Desk('Keven', 100);
+    console.log(desk)
+    console.log(desk.__proto__)
+    // alert(desk.name)
+    // alert(desk.famili)
+    // alert(desk.sex)
+    // alert(desk.run('cmm'))
+
+    function Box2(name, age) { //Box 构造
+      this.name = name;
+      this.age = age;
+      this.famili = ['哥哥', '姐姐', '弟弟']
+    }
+    Box2.prototype.sex = '男'
+    Box2.prototype.run = function(str) {
+      return 'kewen' + str
+    }
+    function Desk2(name, age) { //Desk 构造
+      Box2.call(this, name, age)
+      this.__proto__ = Box2.prototype
+    }
+    // Desk.prototype = new Box2()
+    var desk2 = new Desk2('Keven2', 1002);
+    console.log(desk2)
+    console.log(desk2.__proto__)
+  </script>
+</body>
+
+</html>

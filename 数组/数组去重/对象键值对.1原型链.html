@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var ary = [2, 34, 2, 53, 4, 3, 65, 53, 1, 4, 3, 5, 34, 65, 7, 7, 2, 8, 8, 9]
+    Array.prototype.myUnique = function () {
+      var obj = {};
+      for (var i = 0; i < this.length; i++) {
+        var cur = this[i];
+        if (typeof obj[cur] !== 'undefined') {
+          //元素已经存在
+          // this.splice(i, 1);
+          this[i] = this[this.length - 1];
+          this.length--;
+          i--;
+          continue
+        }
+        obj[cur] = cur;
+      }
+      obj = null
+      return this;
+    }
+    console.log(ary.myUnique())
+    console.log(ary.myUnique().sort((a,b)=>a-b))
+  </script>
+</body>
+
+</html>

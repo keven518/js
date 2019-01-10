@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a=0;
+    function aa(){
+        alert(a)
+        a=3
+    }
+    //结果是什么都没发生，因为要执行aa函数才会执行alert(0)
+    
+    // ------------分割线1------------------
+    
+    // var a=0;
+    // function aa(){
+    //     alert(a)
+    //     var a=3
+    // }
+    // aa();
+    // //underfind  在aa函数里面，有var a=3，那么在aa作用域里面，就是把a这个变量声明提前，但是不会赋值，所以是underfind
+    
+    // // ------------分割线2------------------
+    
+    // var a=0;
+    // function aa(a){
+    //     alert(a)
+    //     var a=3
+    // }
+    // aa(5)
+    // alert(a)
+    //5,0   在函数体内，参数a的优先级高于变量a
+    
+    // ------------分割线3------------------
+    
+    // var a=0;
+    // function aa(a){
+    //     alert(a)
+    //     a=3
+    // }
+    // aa(5)
+    // alert(a)
+    // //5,0   在函数体内，执行alert(a)和a=3,修改的的并不是全局变量a，而是参数a
+    
+    // ------------分割线4------------------
+    
+    // var a=0;
+    // function aa(a){
+    //     alert(a)
+    //     var a=3
+    //     alert(a)
+    // }
+    // aa(5)
+    //5,3
+    //这个我也有点不理解，请教网上的说法，有两个答案(小伙伴如果知道怎么理解，欢迎在评论上指点)
+    //1.参数优先级高于变量声明，所以 变量a的声明其实被忽略了，此时相当于
+    //var a=0;
+    // function aa(a){
+    //  var a=5;
+    //    alert(a)
+    //    a=3
+    //    alert(a)
+    // }
+    // aa(50)
+    
+    //2.形参和局部变量优先级一样，此时相当于
+    // var a=0;
+    // function aa(a){
+    //   var a;    //先声明
+    //   a=5      //由于形参和变量名称一样，覆盖了！
+    //   alert(a)
+    //   a=3
+    //   alert(a)
+    // }
+    // aa(55)
+    
+    // // ------------分割线5------------------
+    
+    // var a=0;
+    // function aa(a){
+    //     console.log(0)
+    //     alert(a)
+    //     a=3
+    //     alert(a)
+    //     console.log(1)
+    // }
+    // aa()
+    // alert(a)
+    //underfind  3  0 
+    //首先，参数优先级高于全局变量，由于没传参数，所以是underfind
+    //a=3，实际上修改的时形参a的值，并不是全局变量a，往下alert(a)也是形参a
+    //最后的alert(a)，你懂的
+
+
+
+
+
+
+
+    
+  </script>
+</body>
+</html>
